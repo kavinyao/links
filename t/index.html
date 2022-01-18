@@ -4,6 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
+body {
+  font-family: sans-serif;
+}
+
 div {
   width: 500px;
   margin: 10px auto;
@@ -12,6 +16,7 @@ div {
 
 a {
   text-decoration: none;
+  color: #0d6efd;
 }
 
 li {
@@ -23,6 +28,13 @@ li {
   <body>
     <div>
       <ul>
+        <li>
+          <form id="form" action="" method="get" target="_blank">
+            <input type="text" id="name-input" />
+            <input type="submit" value="Submit" />
+          </form>
+        </li>
+        <li><a href="https://player.twitch.tv/?channel=sweetdreams&enableExtensions=false&muted=false&parent=twitch.tv&volume=1">sweetdreams</a></li>
         <li><a href="https://player.twitch.tv/?channel=tsm_imperialhal&enableExtensions=false&muted=false&parent=twitch.tv&volume=1">ImperialHal</a></li>
         <li><a href="https://player.twitch.tv/?channel=taxi2g&enableExtensions=false&muted=false&parent=twitch.tv&volume=1">taxi2g</a></li>
         <li><a href="https://player.twitch.tv/?channel=izeroplus&enableExtensions=false&muted=false&parent=twitch.tv&volume=1">iZeroplus</a></li>
@@ -30,6 +42,24 @@ li {
         <li><a href="https://player.twitch.tv/?channel=playapex&enableExtensions=false&muted=false&parent=twitch.tv&volume=1">PlayApex</a></li>
       </ul>
     </div>
+
+    <script>
+      window.addEventListener('DOMContentLoaded', (e) => {
+        let form = document.querySelector('#form');
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+
+          let input = document.querySelector('#name-input');
+          if (!input.value) {
+            window.alert('Input Missing!');
+            return;
+          }
+
+          let url = 'https://player.twitch.tv/?channel=' + input.value + '&enableExtensions=false&muted=false&parent=twitch.tv&volume=1';
+          window.open(url);
+        });
+      });
+    </script>
   </body>
 
 </html>
